@@ -13,6 +13,8 @@ import createAlbum from './routes/createAlbum.js';
 import getOneAlbum from './routes/getOneAlbum.js';
 import search from './routes/search.js';
 import addArtistToTrack from './routes/addArtistToTrack.js';
+import addTrackToAlbum from './routes/addTrackToAlbum.js';
+import deleteAlbum from './routes/deleteAlbum.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -32,6 +34,8 @@ app.use('/', createAlbum);
 app.use('/', getOneAlbum);
 app.use('/', search);
 app.use('/', addArtistToTrack);
+app.use('/', addTrackToAlbum);
+app.use('/', deleteAlbum);
 
 app.listen(port, () => {
     console.log(`App listening on port ${port}`);

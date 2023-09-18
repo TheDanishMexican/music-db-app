@@ -65,7 +65,6 @@ export async function createTrack(event) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
         } else {
             const errorData = await response.json();
             console.log({message: errorData});

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to the music database</h1>
+
+    <div id="buttonContainer">
+        <h3>Create</h3>
+        <button id="createAlbum">Create new album</button>
+        <button id="createTrack">Create new track</button>
+        <button id="createArtist">Create new artist</button>
+
+        <br><br>
+
+        <h3>Add</h3>
+        <button id="addTrack">Add track to album</button>
+        <button id="addArtist">Add artist to track</button>
+
+        <br><br>
+
+        <h3>Delete</h3>
+        <button id="deleteTrack">Delete track</button>
+        <button id="deleteAlbum">Delete album</button>
+
+        <br><br>
+
+        <h3>Edit</h3>
+        <button id="editTrack">Edit track</button>
+        <button id="editAlbum">Edit album</button>  
+    </div>
+
+    <br><br>
+
+    <div id="search">
+        <input type="text" id="searchInput" placeholder="Enter your search..." required>
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div id="trackContainer">
+        <h2>Tracks</h2>
+        <ul id="trackList"></ul>
+    </div>
+
+    <div id="albumContainer">
+        <h2>Albums</h2>
+        <ul id="albumList"></ul>
+    </div>
+
+    <dialog id="createAlbumDialog">
+    <h2>Create Album</h2>
+    <form id="createAlbumForm" action="/albums" method="POST" class="submitForm">
+        <label for="album_name">Album Name:</label>
+        <input type="text" id="album_name" name="album[album_name]" required>
+        <br><br>
+
+        <label for="artistSelect">Select Artist:</label>
+        <select id="select_in_create_album" name="artist_id" data-select-type="artist" required>
+        </select>
+        <br><p style="font-size: 12px;">*If you artist isn't on the list, got to <br> 'Create new artist' and they will appear afterwards.</p><br>
+
+        <input type="submit" value="Create Album" data-dialog="createAlbumDialog" class="close-button">
+        <input type="button" value="Cancel" class="cancel-button" id="inCreateAlbum" data-form-id="inAlbum">
+    </form>
+    </dialog>
+
+    <dialog id="createTrackDialog" >
+    <h2>Create Track</h2>
+    <form id="createTrackForm" action="/tracks" method="POST" class="submitForm">
+        <label for="track_name">Track Name:</label>
+        <input type="text" id="track_name" name="track_name" required>
+        <br><br>
+
+        <label for="artist_name">Artist Name:</label>
+        <select id="artist-select_in_create_track" data-select-type="artist" name="artist_id" required>
+        </select>
+        <br><br>
+
+        <label for="album_name">Album Name:</label>
+        <select id="album-select_in_create_track" data-select-type="album" name="album_id" required>
+        </select>
+        <br><p style="font-size: 12px;">*If your artist/album isn't on the list, go to 
+        <br> 'Create new artist/album' and they will appear afterwards.</p><br>
+
+        <input type="submit" value="Create Track" data-dialog="createTrackDialog" class="close-button">
+        <input type="button" value="Cancel" class="cancel-button" id="inCreateTrack" data-form-id="inTrack">
+    </form>
+    </dialog>
+
+    <dialog id="createArtistDialog" >
+    <h2>Create Artist</h2>
+    <form id="createArtistForm" action="/artists" method="POST" class="submitForm">
+        <label for="artist_name">Artist Name:</label>
+        <input type="text" id="artist_name" name="artist_name" required>
+        <br><br>
+
+        <input type="submit" value="Create Artist" data-dialog="createArtistDialog" class="close-button">
+        <input type="button" value="Cancel" class="cancel-button" id="inCreateArtist" data-form-id="inArtist">
+    </form>
+    </dialog>
+
+    <dialog id="deleteTrackDialog">
+        <h2>Select Tracks</h2>
+            <form id="deleteTrackForm" action="/tracks" method="DELETE" class="submitForm">
+                <label for="trackSelect">Select a Track:</label>
+                <select id="trackSelect" name="trackSelect" data-select-type="track" required>
+                </select><br><br>
+                <input type="submit" value="Delete" data-dialog="deleteTrackDialog" class="close-button">
+                <input type="button" value="Cancel" class="cancel-button" id="inDeleteTrack" data-form-id="inDeleteTrack">
+            </form>
+    </dialog>
+
+    <dialog id="addArtistDialog">
+        <h2>Add artist to track</h2>
+        <form id="addArtistForm">
+            <label for="artistSelect">Artist Name:</label>
+            <select id="artist-select_in_add_artist" name="artistSelect" data-select-type="artist">
+            </select>
+
+            <br><br>
+
+            <label for="trackSelect">Track Name:</label>
+            <select id="track-select_in_add_artist" name="trackSelect" data-select-type="track">
+            </select>
+
+            <br><br>
+
+            <input type="submit" value="Submit" data-dialog="deleteTrackDialog">
+            <input type="button" value="Cancel" class="cancel-button" id="inAddArtist" data-form-id="inAddArtist">
+
+        </form>
+    </dialog>
+
+    <dialog id="addTrackDialog"></dialog>
+</body>
+<script type="module" src="main.js"></script>
+</html>

@@ -1,6 +1,7 @@
 "use strict";
 
 import { endpoint } from "../main.js";
+import { getAllAlbums, getAllTracks } from "./get.js";
 
 export async function createArtist(event) {
     event.preventDefault();
@@ -35,45 +36,6 @@ export async function createArtist(event) {
     }
 };
 
-export async function createTrack(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    let track_name = form.track_name.value;
-    const artist_id = form.artist_id.value;
-    const album_id = form.album_id.value;
-
-    // Capitalize the first letter of each word in track_name
-    if (track_name) {
-        track_name = track_name
-            .split(' ') // Split the string into words
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-            .join(' '); // Join the words back together with spaces
-    }
-
-    if (!track_name) {
-        console.log('Track name is empty.');
-        return;
-    }
-
-    try {
-        const response = await fetch(`${endpoint}/tracks`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ track_name, artist_id, album_id }),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-        } else {
-            const errorData = await response.json();
-            console.log({message: errorData});
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
-
 export async function createAlbum(event) {
     event.preventDefault();
 
@@ -99,7 +61,6 @@ export async function createAlbum(event) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
         } else {
             const errorData = await response.json();
             console.log({ message: errorData });
@@ -107,4 +68,41 @@ export async function createAlbum(event) {
     } catch (error) {
         console.log(error);
     }
+    getAllAlbums();
+}
+
+export async function createTrack(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    let track_name = form.track_name.value;
+    const artist_id = form.artist_id.value;
+    const album_id = form.album_id.value;
+
+    // Capitalize the first letter of each word in track_name
+    if (track_name) {
+        track_name = track_name
+            .split(' ') // Split the string into words
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+            .join(' '); // Join the words back together with spaces
+    }
+
+    try {
+        const response = await fetch(`${endpoint}/tracks`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ track_name, artist_id, album_id })
+        }); 
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            const errorData = await response.json();
+            console.log({ message: errorData });
+        }
+    } catch(error) {
+        console.log(error);
+    }
+    console.log('got here');
 }

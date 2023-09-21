@@ -7,6 +7,8 @@ window.addEventListener('load', start);
 
 export const endpoint = 'http://localhost:3000'
 
+// https://test-for-database-project.azurewebsites.net
+
 export async function start() {
     createButtonInitialized();
     cancelButtonInitialized();

@@ -111,20 +111,21 @@ export async function getAllTracks() {
                 const html = /*html*/`
                 <li value=${track.track_id}>
                     <strong>Track</strong>: ${track.track_name},<br>
-                    <strong>Artist</strong>: ${track.artist_name},<br>
-                    <strong>Album</strong>: ${track.album_name}.<br><br>
+                    <strong>Albums</strong>: ${track.album_names},<br>
+                    <strong>Artists</strong>: ${track.artist_names}.<br><br>
                 </li>
             `;
 
             list.insertAdjacentHTML('beforeend', html);
             });
         } else {
-            console.log({message: error});
+            console.log({ message: error });
         }
     } catch (error) {
         console.log(error);
     }
 };
+
 
 export async function getAllAlbums() {
     const list = document.querySelector("#albumList");
@@ -140,14 +141,15 @@ export async function getAllAlbums() {
                 const html = /*html*/`
                 <li value=${album.album_id}>
                     <strong>Album</strong>: ${album.album_name},<br>
-                    <strong>Artist</strong>: ${album.artist_name}.<br><br>
+                    <strong>Artists</strong>: ${album.artist_names},<br>
+                    <strong>Tracks</strong>: ${album.track_names}.<br><br>
                 </li>
                 `;
 
                 list.insertAdjacentHTML('beforeend', html);
             });
         } else {
-            console.log({message: error});
+            console.log({ message: error });
         }
     } catch (error) {
         console.log(error);

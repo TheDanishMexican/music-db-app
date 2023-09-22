@@ -20,18 +20,21 @@ export async function search() {
             trackList.innerHTML = '';
 
             if (data.length === 0) {
+
                 trackList.innerHTML = '<p>No results found.</p>';
             } else {
                 data.forEach((track) => {
+                    if (track.result_type === 'track') {
                     const html = /*html*/ `
                         <li value=${track.track_id}>
-                            <strong>Track</strong>: ${track.track_name},<br>
-                            <strong>Artists</strong>: ${track.artist_name },<br>
-                            <strong>Album</strong>: ${track.album_name}.<br><br>
+                            <strong>Track</strong>: ${track.name},<br>
+                            <strong>Artists</strong>: ${track.artist_names },<br>
+                            <strong>Album</strong>: ${track.track_names}.<br><br>
                         </li>
                     `;
 
                     trackList.insertAdjacentHTML('beforeend', html);
+                    } 
                 });
             }
         } else {
@@ -62,14 +65,17 @@ export async function searchAlbums() {
                 albumList.innerHTML = '<p>No results found.</p>';
             } else {
                 data.forEach((album) => {
+                    if (album.result_type === 'album') {
                     const html = /*html*/ `
                         <li value=${album.album_id}>
-                            <strong>Album</strong>: ${album.album_name},<br>
-                            <strong>Artists</strong>: ${album.artist_name},<br>
+                            <strong>Album</strong>: ${album.name},<br>
+                            <strong>Artists</strong>: ${album.artist_names},<br>
+                            <strong>Tracks</strong>: ${album.track_names},<br>
                         </li><br>
                     `;
 
                     albumList.insertAdjacentHTML('beforeend', html);
+                    }
                 });
             }
         } else {

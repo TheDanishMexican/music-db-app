@@ -4,7 +4,7 @@ import { addArtistToTrack } from "../CRUD/add.js";
 import { createAlbum, createArtist, createTrack } from "../CRUD/create.js";
 import { deleteTrack } from "../CRUD/delete.js";
 import { getAlbumsForSelect, getArtistsForSelect, getTracksForSelect } from "../CRUD/get.js";
-import { search, searchAlbums } from "../CRUD/searchFunc.js";
+import { search,searchAlbums } from "../CRUD/searchFunc.js";
 import { closeDialog, closeDialogOnSubmit, openDialog } from "./dialog.js";
 
 

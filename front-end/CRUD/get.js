@@ -155,3 +155,30 @@ export async function getAllAlbums() {
         console.log(error);
     }
 };
+
+export async function getAllArtists() {
+    const list = document.querySelector("#artistList");
+
+    try {
+        const response = await fetch(`${endpoint}/artists`);
+        const data = await response.json();
+
+        if (response.ok) {
+            list.innerHTML = '';
+
+            data.forEach((artist) => {
+                const html = /*html*/`
+                <li>
+                    <strong>Name</strong>: ${artist.artist_name}<br><br>
+                </li>
+                `;
+
+                list.insertAdjacentHTML('beforeend', html);
+            });
+        } else {
+            console.log({ message: error });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};

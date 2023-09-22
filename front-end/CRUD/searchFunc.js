@@ -28,8 +28,8 @@ export async function search() {
                     const html = /*html*/ `
                         <li value=${track.track_id}>
                             <strong>Track</strong>: ${track.name},<br>
-                            <strong>Artists</strong>: ${track.artist_names },<br>
-                            <strong>Album</strong>: ${track.track_names}.<br><br>
+                            <strong>Artists</strong>: ${track.track_names },<br>
+                            <strong>Album</strong>: ${track.artist_names}.<br><br>
                         </li>
                     `;
 
@@ -75,6 +75,44 @@ export async function searchAlbums() {
                     `;
 
                     albumList.insertAdjacentHTML('beforeend', html);
+                    }
+                });
+            }
+        } else {
+            console.log({message: error});
+        }
+    } catch (error) {
+        console.log({message: error});
+    }
+}
+export async function searchArtists() {
+    const searchInput = document.querySelector("#searchInput").value.trim();
+    const artistList = document.querySelector("#artistList");
+
+    try {
+        if (searchInput === '') {
+            //add await getAllArtists;
+            return;
+        }
+
+        const response = await fetch(`${endpoint}/search?q=${searchInput}`);
+
+        if (response.ok) {
+            const data = await response.json();
+            artistList.innerHTML = '';
+
+            if (data.length === 0) {
+                artistList.innerHTML = '<p>No results found.</p>';
+            } else {
+                data.forEach((artist) => {
+                    if (artist.result_type === 'artist') {
+                    const html = /*html*/ `
+                        <li>
+                            <strong>Name</strong>: ${artist.name},<br>
+                        </li><br>
+                    `;
+
+                    artistList.insertAdjacentHTML('beforeend', html);
                     }
                 });
             }

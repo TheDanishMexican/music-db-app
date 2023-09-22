@@ -1,6 +1,6 @@
 "use strict";
 
-import { getAllAlbums, getAllTracks } from "./CRUD/get.js";
+import { getAllAlbums, getAllArtists, getAllTracks } from "./CRUD/get.js";
 import { SubmitButtonInitialized, addArtistButtonInitialized, albumSelectInitialized, artistSelectInitialized, cancelButtonInitialized, createAlbumButtonInitialized, createArtistButtonInitialized, createButtonInitialized, createTrackButtonInitialized, deleteTrackButtonInitialized, searchButtonInitialized, trackSelectInitialized } from "./modules/eventlisteners.js";
 
 window.addEventListener('load', start);
@@ -20,6 +20,7 @@ export async function start() {
     createAlbumButtonInitialized();
     getAllTracks();
     getAllAlbums();
+    getAllArtists();
     deleteTrackButtonInitialized();
     SubmitButtonInitialized();
     searchButtonInitialized();

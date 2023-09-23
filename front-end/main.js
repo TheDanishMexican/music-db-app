@@ -5,9 +5,8 @@ import { SubmitButtonInitialized, addArtistButtonInitialized, albumSelectInitial
 
 window.addEventListener('load', start);
 
-export const endpoint = 'http://localhost:3000'
+export const endpoint = 'https://test-for-database-project.azurewebsites.net'
 
-// https://test-for-database-project.azurewebsites.net
 
 export async function start() {
     createButtonInitialized();

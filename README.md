@@ -1,6 +1,10 @@
 # Music Database App
 Welcome to our music database app!
 
+## Getting started
+
+Before proceeding please start by reading the README in the backend repo if you have not done so yet.
+
 ## Important information
 
 This README only covers the frontend of the code.

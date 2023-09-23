@@ -8,8 +8,10 @@ Be aware that the buttons on the page might not behave correctly, as this was so
 
 ## Links
 
-+ LINK FRONTEND REPO: https://github.com/TheDanishMexican/music-db-app-frontend
++ LINK FRONTEND REPO: https://github.com/TheDanishMexican/music-db-app-frontend/tree/danielBranch
 
 + LINK FRONTEND SITE: https://thedanishmexican.github.io/music-db-app-frontend/
 
 + LINK BACKEND SITE(tracks data): https://test-for-database-project.azurewebsites.net/tracks
+
+Note: The main branch of our repo is called danielBranch, in case of any confusion.
